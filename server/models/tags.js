@@ -4,10 +4,9 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tag extends Model {
     static associate(models) {
-      models.Tag.belongsTo(models.Palette, {
+      models.Tag.belongsToMany(models.Palette, {
+        through: "Tag_palette",
         foreignKey: "tag_id",
-        targetKey: "id",
-        onDelete: "cascade",
       });
     }
   }
