@@ -5,11 +5,12 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       models.User.belongsToMany(models.Palette, {
-        through: "Like",
+        through: "Likes",
+        foreignKey: "user_id",
       });
       models.User.hasMany(models.Palette, {
         foreignKey: "user_id",
-        targetKey: "id",
+        sourceKey: "id",
         onDelete: "cascade",
       });
     }

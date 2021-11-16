@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
   class Palette extends Model {
     static associate(models) {
       models.Palette.belongsToMany(models.User, {
-        through: "Like",
+        through: "Likes",
+        foreignKey: "palette_id",
       });
       models.Palette.belongsTo(models.User, {
         foreignKey: "user_id",
         targetKey: "id",
         onDelete: "cascade",
       });
-      models.Palette.hasMany(models.Tag, {
-        foreignKey: "tag_id",
-        targetKey: "id",
-        onDelete: "cascade",
+      models.Palette.belongsToMany(models.Tag, {
+        through: "Tag_palette",
+        foreignKey: "palette_id",
       });
     }
   }
