@@ -1,5 +1,5 @@
 const express = require("express");
-const usersController = require("../controller/users");
+const usersController = require("../controller/user");
 const isAuth = require("../middleware/verifyToken");
 const { uploads } = require("../middleware/uploads");
 
